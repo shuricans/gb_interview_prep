@@ -49,11 +49,14 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public StudentDto save(StudentDto studentDto) {
         Long studentId = studentDto.getId();
-        Student student = (studentId != null) ?
-                (studentRepository.findById(studentId)
-                        .orElseThrow(() ->
-                        new StudentNotFoundException("Student with id = " + studentId +  " does not exist.")))
-                : new Student();
+        Student student;
+        if (studentId != null) {
+            student = studentRepository.findById(studentId)
+                    .orElseThrow(() ->
+                            new StudentNotFoundException("Student with id = " + studentId +  " does not exist."));
+        } else {
+            student = new Student();
+        }
 
         student.setName(studentDto.getName());
         student.setAge(studentDto.getAge());
