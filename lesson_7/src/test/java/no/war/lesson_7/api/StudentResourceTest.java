@@ -57,7 +57,7 @@ class StudentResourceTest {
 
         int amountStudents = (int) studentRepository.count();
 
-        int studentId = ThreadLocalRandom.current().nextInt(amountStudents) + 1;
+        int studentId = 5;
         Student student = students.get(studentId);
 
 
@@ -70,8 +70,7 @@ class StudentResourceTest {
     @SneakyThrows
     @Test
     void shouldFindStudentById() {
-        int amountStudents = (int) studentRepository.count();
-        int studentId = ThreadLocalRandom.current().nextInt(amountStudents) + 1;
+        int studentId = 3;
 
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders
                 .get("/api/v1/student/" + studentId)
@@ -101,8 +100,7 @@ class StudentResourceTest {
     @SneakyThrows
     @Test
     void shouldDeleteStudentById() {
-        int amountStudents = (int) studentRepository.count();
-        int studentId = ThreadLocalRandom.current().nextInt(amountStudents) + 1;
+        int studentId = 6;
 
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders
                 .delete("/api/v1/student/" + studentId)
